@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack/webpack.config.prod.js  --colors",
-    "test": "jest --coverage",
+    "test": "jest --coverage --passWithNoTests",
     "report-coverage": "cat ./coverage/lcov.info | coveralls --verbose ",
     "semantic-release": "semantic-release",
     "commit": "npx git-cz"

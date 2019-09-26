@@ -1,8 +1,5 @@
 // jest.config.js
 module.exports = {
-  moduleNameMapper: {
-    '\\.(css|less|scss|sss|styl)$': '<rootDir>/node_modules/jest-css-modules'
-  },
   coverageThreshold: {
     global: {
       branches: 90,

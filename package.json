@@ -1,0 +1,104 @@
+{
+  "name": "js-paint",
+  "version": "0.0.0-development",
+  "description": "sample paint",
+  "scripts": {
+    "dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack/webpack.config.prod.js  --colors",
+    "test": "jest --coverage",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls --verbose ",
+    "semantic-release": "semantic-release",
+    "commit": "npx git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kappys1/js-paint.git"
+  },
+  "keywords": [
+    "paint"
+  ],
+  "author": "Alex Marcos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kappys1/js-paint/issues"
+  },
+  "homepage": ".",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "autoprefixer": "^9.6.1",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "clean-webpack-plugin": "^2.0.2",
+    "copy-webpack-plugin": "^5.0.4",
+    "coveralls": "^3.0.6",
+    "css-loader": "^3.2.0",
+    "css-mqpacker": "^7.0.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-loader": "^3.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.5",
+    "jest": "^24.9.0",
+    "jest-css-modules": "^2.1.0",
+    "lint-staged": "^9.3.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "1.18.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "stylelint": "^11.0.0",
+    "stylelint-prettier": "^1.1.1",
+    "stylelint-scss": "^3.11.1",
+    "stylelint-selector-bem-pattern": "^2.1.0",
+    "travis-deploy-once": "^5.0.11",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1",
+    "webpack-manifest-plugin": "^2.1.2",
+    "webpack-merge": "^4.2.2",
+    "semantic-release": "^15.13.24"
+  }
+}

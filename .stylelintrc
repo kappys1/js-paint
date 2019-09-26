@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    "stylelint-selector-bem-pattern",
+    "stylelint-scss",
+    "stylelint-prettier"
+  ],
+  rules: {
+    "prettier/prettier": [
+      true,
+      {
+        "printWidth": 80,
+        "tabWidth": 2,
+        "singleQuote": true,
+        "bracketSpacing": false,
+        "useTabs": false
+      }
+    ],
+    "plugin/selector-bem-pattern": {
+      "componentName": "/^[a-zA-Z]+$/",
+      "componentSelectors": "suitSelector"
+    }
+  }
+}

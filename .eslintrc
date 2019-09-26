@@ -1,0 +1,22 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["jsx-a11y", "import", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "import/named": 0,
+    "no-console": 1,
+    "no-unused-expressions": 0,
+    "allowShortCircuit": 0,
+    "allowTernary": 0
+  }
+}

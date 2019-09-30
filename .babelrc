@@ -1,12 +1,8 @@
 {
   "presets": [
-    ["@babel/env", {
-      "modules": "commonjs"
-    }]
+    "@babel/preset-env"
   ],
   "plugins": [
-    "add-module-exports",
-    "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-proposal-class-properties"
+    "transform-class-properties"
   ]
 }

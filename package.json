@@ -3,8 +3,8 @@
   "version": "0.0.0-development",
   "description": "sample paint",
   "scripts": {
-    "dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
-    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack/webpack.config.prod.js  --colors",
+    "dev": "webpack-dev-server --env.mode development --hot --inline --colors",
+    "build": "rm -rf dist && webpack --env.mode production  --colors",
     "test": "jest --coverage --passWithNoTests",
     "report-coverage": "cat ./coverage/lcov.info | coveralls --verbose ",
     "semantic-release": "semantic-release",
@@ -59,9 +59,11 @@
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.0.16",
     "autoprefixer": "^9.6.1",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "clean-webpack-plugin": "^2.0.2",
     "copy-webpack-plugin": "^5.0.4",
     "coveralls": "^3.0.6",
@@ -81,6 +83,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
+    "jest-canvas-mock": "^2.1.1",
     "jest-css-modules": "^2.1.0",
     "lint-staged": "^9.3.0",
     "mini-css-extract-plugin": "^0.8.0",
@@ -88,6 +91,7 @@
     "postcss-loader": "^3.0.0",
     "prettier": "1.18.2",
     "sass-loader": "^8.0.0",
+    "semantic-release": "^15.13.24",
     "style-loader": "^1.0.0",
     "stylelint": "^11.0.0",
     "stylelint-prettier": "^1.1.1",
@@ -98,7 +102,6 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1",
     "webpack-manifest-plugin": "^2.1.2",
-    "webpack-merge": "^4.2.2",
-    "semantic-release": "^15.13.24"
+    "webpack-merge": "^4.2.2"
   }
 }

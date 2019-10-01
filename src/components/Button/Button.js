@@ -18,7 +18,7 @@ class Button extends Component {
    * @throws {Error} - Incorrect type
    * @memberof ActionButton
    */
-  constructor({children, isEnable, onClick}) {
+  constructor({children, isEnable, onClick, className}) {
     super('button')
 
     if (typeof children === 'undefined') throw new Error('children is required')
@@ -36,8 +36,9 @@ class Button extends Component {
     this.children = children
     this.isEnable = isEnable
     this.onClick = onClick
+    this.className = className
 
-    if (this.isEnable) this.enable()
+    if (this.className) this.element.classList.add(this.className)
 
     if (this.onClick) this.element.addEventListener('click', this.handleClick)
   }

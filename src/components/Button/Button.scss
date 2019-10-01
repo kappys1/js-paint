@@ -1,9 +1,9 @@
-$ActionButton-background: transparent;
-$ActionButton-border: none;
+$Button-background: transparent;
+$Button-border: none;
 
-.ActionButton {
+.Button {
   outline: none;
-  border: $ActionButton-border;
-  background: $ActionButton-background;
+  border: $Button-border;
+  background: $Button-background;
   cursor: pointer;
 }

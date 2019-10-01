@@ -1,14 +1,60 @@
-$Paint-gridTemplateColumns: 2fr 1fr;
-$Paint-gridColumnGap: 2em;
+@import '../../theme/mixins';
+
 $Paint-backgroundColor: #ffffff;
+$Paint-backgroundColorSection: #F1F1F3;
 
 .Paint {
-  display: grid;
-  grid-template-columns: $Paint-gridTemplateColumns;
-  grid-column-gap: $Paint-gridColumnGap;
+  width: 100%;
+  height: 100%;
+  @include flex-content(column, flex-start, flex-start);
 
-  &-canvasWrapper {
-    background-color: $Paint-backgroundColor;
+  .Section__Sidebar,
+  &-headerSection {
+    background-color: $Paint-backgroundColorSection;
+
+  }
+
+  &-headerSection {
+    height: 6%;
+  }
+
+  &-headerSection,
+  &-bodySection {
+    width: 100%;
+  }
+
+  &-bodySection {
+    height: 94%;
+    width: 100%;
+    @include flex-content(row, flex-start, flex-start);
+  }
+
+  .Section {
+
+    &__Canvas,
+    &__Sidebar {
+      height: 100%;
+    }
+
+    &__Canvas {
+      width: 85%;
+      overflow: auto;
+      @include flex-content(row, center, center);
+
+      .Canvas {
+        background-color: $Paint-backgroundColor;
+      }
+    }
+
+    &__Sidebar {
+      width: 15%;
+      min-width: 250px;
+      max-width: 350px;
+
+      .Section {
+        padding: 0;
+      }
+    }
   }
 
 }

@@ -19,33 +19,49 @@ class App extends Component {
 
     this.element.classList.add('App')
 
+    const windowWidth = Math.max(
+      document.body.scrollWidth,
+      document.documentElement.scrollWidth,
+      document.body.offsetWidth,
+      document.documentElement.offsetWidth,
+      document.documentElement.clientWidth
+    )
+    const windowHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.documentElement.clientHeight
+    )
+
+    const colors = [
+      '#FF0000',
+      '#F20260',
+      '#9906A8',
+      '#562393',
+      '#3F49AD',
+      '#45B050',
+      '#009788',
+      '#00BAD4',
+      '#00A4F4',
+      '#0F91ED',
+      '#85C649',
+      '#CADB40',
+      '#FBEE36',
+      '#FFC223',
+      '#FF9711',
+      '#000000',
+      '#5F7C8C',
+      '#9D9D9D',
+      '#7A5444',
+      '#FB520D'
+    ]
     const paint = new Paint({
-      width: 900,
-      height: 650,
-      colors: [
-        '#000000',
-        '#fd5658',
-        '#ffbc00',
-        '#16c757',
-        '#16affc',
-        '#ffffff',
-        '#a42b1d',
-        '#ed8323',
-        '#568b34',
-        '#085799',
-        '#cfd8dc',
-        '#ff4081',
-        '#ff6e40',
-        '#aeea00',
-        '#304ffe',
-        '#4e342e',
-        '#d414f6',
-        '#8d6e63',
-        '#1de9b6',
-        '#7c4dff'
-      ],
+      width: windowWidth * 0.6,
+      height: windowHeight * 0.8,
+      colors: [...colors],
       lineWidths: [1, 2, 3, 4, 5],
-      defaultColor: '#000000',
+      defaultColor: colors[0],
       defaultLineWidth: 1
     })
     this.element.appendChild(paint.element)

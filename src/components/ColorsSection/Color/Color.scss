@@ -1,0 +1,35 @@
+$Color-width: 35px;
+$Color-height: 35px;
+
+
+
+.Color {
+  position: relative;
+  outline: none;
+  border: none;
+  background: transparent;
+  width: $Color-width;
+  height: $Color-height;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+
+  span {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 2px solid transparent;
+    transition: border 0.2s ease-in-out
+  }
+
+  &-icon {
+    width: $Color-width;
+    height: $Color-height;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &--active span {
+    border: 2px solid white
+  }
+}

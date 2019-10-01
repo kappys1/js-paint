@@ -4,6 +4,8 @@ import Button from '../Button'
 import Stroke from '../../entities/Stroke'
 import StoreStroke from '../../entities/Store'
 import './Paint.scss'
+import Section from '../Section'
+import ColorsSection from '../ColorsSection'
 
 /**
  * Paint Component
@@ -53,8 +55,11 @@ class Paint extends Component {
     this.strokes = new StoreStroke()
     this.currentStroke = {}
 
-    const canvasWrapper = document.createElement('section')
-    canvasWrapper.classList.add('Paint-canvasWrapper')
+    const bodySection = document.createElement('section')
+    bodySection.classList.add('Paint-bodySection')
+
+    const headerSection = document.createElement('section')
+    headerSection.classList.add('Paint-headerSection')
 
     this.canvas = new Canvas({
       width: this.width,
@@ -64,15 +69,9 @@ class Paint extends Component {
       onMouseMove: this.onCanvasMouseMove,
       onMouseUp: this.onCanvasMouseUp
     })
-    canvasWrapper.appendChild(this.canvas.element)
-
-    this.element.appendChild(canvasWrapper)
 
     if (this.canvas) {
-      const toolsWrapper = document.createElement('section')
-      toolsWrapper.classList.add('Paint-toolsWrapper')
-
-      //   // undo button
+      // undo button
       const undoContent = document.createElement('div')
       undoContent.innerText = 'back'
       this.undoButton = new Button({
@@ -81,7 +80,7 @@ class Paint extends Component {
         onClick: this.onUndoClick
       })
 
-      //   // redo button
+      // redo button
       const redoContent = document.createElement('div')
       redoContent.innerText = 'next'
       this.redoButton = new Button({
@@ -89,10 +88,31 @@ class Paint extends Component {
         isEnable: false,
         onClick: this.onRedoClick
       })
-      toolsWrapper.appendChild(this.undoButton.element)
-      toolsWrapper.appendChild(this.redoButton.element)
 
-      this.element.appendChild(toolsWrapper)
+      // colors tool
+      this.colorsSection = new ColorsSection({
+        codes: this.colors,
+        defaultCode: this.defaultColor,
+        onColorClick: this.onColorClick
+      })
+      const colorContainer = new Section({
+        children: [this.colorsSection.element],
+        title: 'Colors'
+      })
+      const headerContainer = new Section({
+        children: [this.undoButton.element, this.redoButton.element]
+      })
+
+      const sideBarContainer = new Section({children: [colorContainer.element]})
+      const canvasContainer = new Section({children: [this.canvas.element]})
+      canvasContainer.element.classList.add('Section__Canvas')
+      sideBarContainer.element.classList.add('Section__Sidebar')
+      headerSection.appendChild(headerContainer.element)
+      bodySection.appendChild(canvasContainer.element)
+      bodySection.appendChild(sideBarContainer.element)
+
+      this.element.appendChild(headerSection)
+      this.element.appendChild(bodySection)
     }
   }
 
@@ -149,6 +169,16 @@ class Paint extends Component {
 
     this.undoButton.enable()
     this.redoButton.disable()
+  }
+
+  /**
+   * Handler of the color click
+   *
+   * @param {string} code -  The color code
+   */
+  onColorClick = code => {
+    const context = this.canvas.element.getContext('2d')
+    context.strokeStyle = code
   }
 
   /**

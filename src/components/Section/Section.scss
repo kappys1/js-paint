@@ -1,0 +1,16 @@
+$Section-borderBottomColor: #cdcdcd;
+
+.Section {
+  padding: 20px;
+  border-bottom: 1px solid $Section-borderBottomColor;
+
+  h1 {
+    font-size: 1.7rem;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  &:last-child {
+    border-bottom: none
+  }
+}

@@ -59,9 +59,9 @@ describe('action button', () => {
 
   describe('initial', () => {
     let button
-
+    const className = 'Example'
     beforeEach(() => {
-      button = new Button({children, isEnable, onClick})
+      button = new Button({children, isEnable, onClick, className})
     })
 
     test('should be an instance of Button', () => {
@@ -89,6 +89,10 @@ describe('action button', () => {
 
     test('should have the same onClick', () => {
       expect(button.onClick).toEqual(onClick)
+    })
+    test('should have the same className', () => {
+      expect(button.className).toEqual(className)
+      expect(button.element.classList.contains(className)).toBeTruthy()
     })
   })
 

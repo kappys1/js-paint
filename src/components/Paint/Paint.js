@@ -1,11 +1,13 @@
 import Component from '../Component'
 import Canvas from '../Canvas'
-import Button from '../Button'
 import Stroke from '../../entities/Stroke'
 import StoreStroke from '../../entities/Store'
-import './Paint.scss'
+import Config from '../../config'
 import Section from '../Section'
-import ColorsSection from '../ColorsSection'
+import Header from '../Header'
+
+import './Paint.scss'
+import SideBar from '../SideBar'
 
 /**
  * Paint Component
@@ -20,46 +22,26 @@ class Paint extends Component {
    * @param {Object} props - The props of the component
    * @param {number} props.width - The width to canvas element
    * @param {number} props.height - The height to canvas element
-   * @param {Array<string>} props.colors - The palette of colors to colors tool
-   * @param {Array<number>} props.lineWidths - The line widths to line widths tool
-   * @param {string} [props.defaultColor] - The default stroke color
-   * @param {number} [props.defaultLineWidth] - The default line width
    * @throws {Error} - Incorrect type
    * @memberof Paint
    */
-  constructor({width, height, colors, lineWidths, defaultColor, defaultLineWidth}) {
+  constructor({width, height}) {
     super('section')
 
     if (typeof width === 'undefined') throw new Error('width is required')
     if (typeof height === 'undefined') throw new Error('height is required')
-    if (typeof colors === 'undefined') throw new Error('colors is required')
-    if (typeof lineWidths === 'undefined') throw new Error('lineWidths is required')
-
-    if (typeof width !== 'number') throw new Error('width must be of type number')
-    if (typeof height !== 'number') throw new Error('height must be of type number')
-    if (!Array.isArray(colors)) throw new Error('colors must be of type Array')
-    if (!Array.isArray(lineWidths)) throw new Error('lineWidths must be of type Array')
-    if (defaultColor && typeof defaultColor !== 'string') throw new Error('defaultColor must be of type string')
-    if (defaultLineWidth && typeof defaultLineWidth !== 'number')
-      throw new Error('defaultLineWidth must be of type number')
 
     this.element.classList.add('Paint')
 
     this.width = width
     this.height = height
-    this.colors = colors
-    this.lineWidths = lineWidths
-    this.defaultColor = defaultColor || '#000000'
-    this.defaultLineWidth = defaultLineWidth || 1
+    this.defaultColor = Config.defaultColor || '#000000'
 
     this.strokes = new StoreStroke()
     this.currentStroke = {}
 
     const bodySection = document.createElement('section')
-    bodySection.classList.add('Paint-bodySection')
-
-    const headerSection = document.createElement('section')
-    headerSection.classList.add('Paint-headerSection')
+    bodySection.classList.add('Paint__body')
 
     this.canvas = new Canvas({
       width: this.width,
@@ -67,53 +49,31 @@ class Paint extends Component {
       defaultColor: this.defaultColor,
       onMouseDown: this.onCanvasMouseDown,
       onMouseMove: this.onCanvasMouseMove,
-      onMouseUp: this.onCanvasMouseUp
+      onMouseUp: this.onCanvasMouseUp,
+      onTouchStart: this.onCanvasMouseDown,
+      onTouchMove: this.onCanvasMouseMove,
+      onTouchEnd: this.onCanvasMouseUp
     })
+    const canvasContainer = new Section({children: [this.canvas.element]})
+    canvasContainer.element.classList.add('Paint__canvas')
 
-    if (this.canvas) {
-      // undo button
-      const undoContent = document.createElement('div')
-      undoContent.innerText = 'back'
-      this.undoButton = new Button({
-        children: [undoContent],
-        isEnable: false,
-        onClick: this.onUndoClick
-      })
+    this.header = new Header({
+      onUndoClick: this.onUndoClick,
+      onRedoClick: this.onRedoClick,
+      onSaveClick: this.onSaveClick
+    })
+    this.header.element.classList.add('Paint__header')
 
-      // redo button
-      const redoContent = document.createElement('div')
-      redoContent.innerText = 'next'
-      this.redoButton = new Button({
-        children: [redoContent],
-        isEnable: false,
-        onClick: this.onRedoClick
-      })
+    this.sideBar = new SideBar({
+      onColorClick: this.onColorClick,
+      onLineWidthClick: this.onLineWidthClick
+    })
+    this.sideBar.element.classList.add('Paint__sidebar')
 
-      // colors tool
-      this.colorsSection = new ColorsSection({
-        codes: this.colors,
-        defaultCode: this.defaultColor,
-        onColorClick: this.onColorClick
-      })
-      const colorContainer = new Section({
-        children: [this.colorsSection.element],
-        title: 'Colors'
-      })
-      const headerContainer = new Section({
-        children: [this.undoButton.element, this.redoButton.element]
-      })
-
-      const sideBarContainer = new Section({children: [colorContainer.element]})
-      const canvasContainer = new Section({children: [this.canvas.element]})
-      canvasContainer.element.classList.add('Section__Canvas')
-      sideBarContainer.element.classList.add('Section__Sidebar')
-      headerSection.appendChild(headerContainer.element)
-      bodySection.appendChild(canvasContainer.element)
-      bodySection.appendChild(sideBarContainer.element)
-
-      this.element.appendChild(headerSection)
-      this.element.appendChild(bodySection)
-    }
+    bodySection.appendChild(canvasContainer.element)
+    bodySection.appendChild(this.sideBar.element)
+    this.element.appendChild(this.header.element)
+    this.element.appendChild(bodySection)
   }
 
   /**
@@ -167,8 +127,8 @@ class Paint extends Component {
     this.strokes.add(this.currentStroke)
     this.currentStroke = {}
 
-    this.undoButton.enable()
-    this.redoButton.disable()
+    this.header.undoButton.enable()
+    this.header.redoButton.disable()
   }
 
   /**
@@ -182,10 +142,30 @@ class Paint extends Component {
   }
 
   /**
+   * Handler of the line width click
+   *
+   * @param {number} width -  The width of line
+   */
+  onLineWidthClick = width => {
+    const context = this.canvas.element.getContext('2d')
+    context.lineWidth = width
+  }
+
+  onSaveClick = () => {
+    const image = this.canvas.element.toDataURL()
+    const aLink = document.createElement('a')
+    aLink.classList.add('download')
+    aLink.download = 'image.png'
+    aLink.href = image
+    aLink.click()
+  }
+
+  /**
    * Handler of the undo click
    *
    * @param {boolean} isEnable -  The flag of enable o disable
    */
+
   onUndoClick = isEnable => {
     if (isEnable) {
       const context = this.canvas.element.getContext('2d')
@@ -196,9 +176,9 @@ class Paint extends Component {
 
       this.strokes.undoPosition()
 
-      if (this.strokes.position === -1) this.undoButton.disable()
+      if (this.strokes.position === -1) this.header.undoButton.disable()
 
-      this.redoButton.enable()
+      this.header.redoButton.enable()
       for (let index = 0; index <= this.strokes.position; index++) {
         const stroke = this.strokes.store[index]
 
@@ -225,9 +205,9 @@ class Paint extends Component {
 
       this.strokes.redoPosition()
 
-      if (this.strokes.isPositionAtLeast) this.redoButton.disable()
+      if (this.strokes.isPositionAtLeast) this.header.redoButton.disable()
 
-      this.undoButton.enable()
+      this.header.undoButton.enable()
 
       const stroke = this.strokes.store[this.strokes.position]
 

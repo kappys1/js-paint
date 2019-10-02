@@ -31,7 +31,7 @@ class Button extends Component {
 
     children.forEach(child => this.element.appendChild(child))
 
-    this.element.disabled = true
+    this.element.disabled = !isEnable
 
     this.children = children
     this.isEnable = isEnable

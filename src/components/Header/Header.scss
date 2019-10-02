@@ -1,0 +1,24 @@
+@import '../../theme/mixins';
+
+.Header {
+  width: 100%;
+
+  nav {
+    height: 100%;
+
+    @include flex-content(row, center, flex-start);
+
+    section {
+      padding: 0;
+    }
+  }
+
+  &__left {
+    width: 70%;
+  }
+
+  &__right {
+    width: 30%;
+    @include flex-content(row, center, flex-end);
+  }
+}

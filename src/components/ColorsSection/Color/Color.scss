@@ -1,8 +1,6 @@
 $Color-width: 35px;
 $Color-height: 35px;
 
-
-
 .Color {
   position: relative;
   outline: none;
@@ -22,11 +20,15 @@ $Color-height: 35px;
     transition: border 0.2s ease-in-out
   }
 
-  &-icon {
+  &__icon {
     width: $Color-width;
     height: $Color-height;
     display: block;
     margin: 0 auto;
+  }
+
+  :hover {
+    opacity: 0.8
   }
 
   &--active span {

@@ -1,42 +1,42 @@
 import Component from '../../Component'
-import './Color.scss'
+import './LineWidth.scss'
 
 /**
- * Color Component
+ * LineWidth Component
  *
- * @class Color
+ * @class LineWidth
  * @extends {Component}
  */
-class Color extends Component {
+class LineWidth extends Component {
   /**
-   * Creates an instance of Color
+   * Creates an instance of LineWidth
    *
    * @param {Object} props - The props of the component
-   * @param {string} props.code - The color code
+   * @param {number} props.width - The width or size of the line
    * @param {boolean} props.isActive - The flag value to active or deactivate
    * @param {mixed} [props.onClick] - The function to onClick event
    * @throws {Error} - Incorrect type
-   * @memberof Color
+   * @memberof LineWidth
    */
-  constructor({code, isActive, onClick}) {
+  constructor({width, isActive, onClick}) {
     super('button')
 
-    if (typeof code === 'undefined') throw new Error('code is required')
+    if (typeof width === 'undefined') throw new Error('width is required')
     if (typeof isActive === 'undefined') throw new Error('isActive is required')
 
-    if (typeof code !== 'string') throw new Error('code must be of type string')
+    if (typeof width !== 'number') throw new Error('width must be of type number')
     if (typeof isActive !== 'boolean') throw new Error('isActive must be of type boolean')
 
-    this.element.classList.add('Color')
+    this.element.classList.add('LineWidth')
 
-    this.code = code
+    this.width = width
     this.isActive = isActive
     this.onClick = onClick
 
-    const colorIcon = document.createElement('span')
-    colorIcon.classList.add('Color__icon')
-    colorIcon.style = `background-color: ${this.code}`
-    this.element.appendChild(colorIcon)
+    const lineWidthIcon = document.createElement('span')
+    lineWidthIcon.classList.add('LineWidth-icon')
+    lineWidthIcon.style = `width: calc(3px * ${this.width}); height: calc(3px * ${this.width})`
+    this.element.appendChild(lineWidthIcon)
 
     if (this.isActive) this.active()
 
@@ -47,10 +47,10 @@ class Color extends Component {
    * Handler of the click
    *
    * @param {MouseEvent} event - The event
-   * @memberof Color
+   * @memberof LineWidth
    */
   handleClick = event => {
-    this.onClick(this.code)
+    this.onClick(this.width)
 
     this.active()
   }
@@ -58,26 +58,26 @@ class Color extends Component {
   /**
    * Active the element
    *
-   * @memberof Color
+   * @memberof LineWidth
    */
   active() {
     this.isActive = true
 
-    this.element.classList.add('Color--active')
+    this.element.classList.add('is-active')
     this.element.disabled = true
   }
 
   /**
    * Deactive the element
    *
-   * @memberof Color
+   * @memberof LineWidth
    */
   deactivate() {
     this.isActive = false
 
-    this.element.classList.remove('Color--active')
+    this.element.classList.remove('is-active')
     this.element.disabled = false
   }
 }
 
-export default Color
+export default LineWidth

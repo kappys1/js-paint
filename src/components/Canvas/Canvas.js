@@ -19,7 +19,17 @@ class Canvas extends Component {
    * @throws {Error} - Incorrect type
    * @memberof Canvas
    */
-  constructor({width, height, strokeColor, onMouseDown, onMouseMove, onMouseUp}) {
+  constructor({
+    width,
+    height,
+    strokeColor,
+    onMouseDown,
+    onMouseMove,
+    onMouseUp,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd
+  }) {
     super('canvas')
 
     if (typeof width === 'undefined') throw new Error('width is required')
@@ -41,12 +51,16 @@ class Canvas extends Component {
     this.onMouseDown = onMouseDown
     this.onMouseMove = onMouseMove
     this.onMouseUp = onMouseUp
+    this.onTouchStart = onTouchStart
+    this.onTouchMove = onTouchMove
+    this.onTouchEnd = onTouchEnd
 
     if (!this.strokeColor) this.strokeColor = '#000000'
 
     this.painting = false
 
     const context = this.element.getContext('2d')
+    context.fillStyle = 'blue'
     context.strokeStyle = this.strokeColor
     context.lineCap = 'round'
     context.lineJoin = 'round'
@@ -54,6 +68,10 @@ class Canvas extends Component {
     if (this.onMouseDown) this.element.addEventListener('mousedown', this.handleMouseDown)
     if (this.onMouseMove) this.element.addEventListener('mousemove', this.handleMouseMove)
     if (this.onMouseUp) this.element.addEventListener('mouseup', this.handleMouseUp)
+
+    if (this.onMouseDown) this.element.addEventListener('touchstart', this.handleTouchStart)
+    if (this.onMouseMove) this.element.addEventListener('touchmove', this.handleTouchMove)
+    if (this.onMouseUp) this.element.addEventListener('touchend', this.handleTouchEnd)
   }
 
   /**
@@ -71,7 +89,20 @@ class Canvas extends Component {
   }
 
   /**
-   * Handler mouse move
+   * Handler touch down
+   * @param {MouseEvent} event - The event
+   * @memberof Canvas
+   */
+  handleTouchStart = event => {
+    this.painting = true
+    const coordinateX = event.touches[0].clientX - this.element.offsetLeft
+    const coordinateY = event.touches[0].clientY - this.element.offsetTop
+
+    this.onTouchStart(this.element.getContext('2d'), coordinateX, coordinateY)
+  }
+
+  /**
+   * Handler touch move
    * @param {MouseEvent} event - The event
    * @memberof Canvas
    */
@@ -81,6 +112,20 @@ class Canvas extends Component {
       const coordinateY = event.pageY - this.element.offsetTop
 
       this.onMouseMove(this.element.getContext('2d'), coordinateX, coordinateY)
+    }
+  }
+
+  /**
+   * Handler Touch move
+   * @param {MouseEvent} event - The event
+   * @memberof Canvas
+   */
+  handleTouchMove = event => {
+    if (this.painting) {
+      const coordinateX = event.touches[0].clientX - this.element.offsetLeft
+      const coordinateY = event.touches[0].clientY - this.element.offsetTop
+
+      this.onTouchMove(this.element.getContext('2d'), coordinateX, coordinateY)
     }
   }
 
@@ -96,6 +141,20 @@ class Canvas extends Component {
     const coordinateY = event.pageY - this.element.offsetTop
 
     this.onMouseUp(this.element.getContext('2d'), coordinateX, coordinateY)
+  }
+
+  /**
+   * Handler mouse up
+   * @param {MouseEvent} event - The event
+   * @memberof Canvas
+   */
+  handleTouchEnd = event => {
+    this.painting = false
+
+    const coordinateX = event.touches[0].clientX - this.element.offsetLeft
+    const coordinateY = event.touches[0].clientY - this.element.offsetTop
+
+    this.onTouchEnd(this.element.getContext('2d'), coordinateX, coordinateY)
   }
 }
 

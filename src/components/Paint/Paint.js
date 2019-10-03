@@ -61,7 +61,7 @@ class Paint extends Component {
       onUndoClick: this.onUndoClick,
       onRedoClick: this.onRedoClick,
       onSaveClick: this.onSaveClick,
-      onOpenSidebarClick: this.onOpenSidebarClick
+      onMenuClick: this.onOpenSidebarClick
     })
     this.header.element.classList.add('Paint__header')
 
@@ -152,10 +152,18 @@ class Paint extends Component {
     context.lineWidth = width
   }
 
+  /**
+   * Handler when click the menu of header and open the SideBar
+   *
+   */
   onOpenSidebarClick = () => {
     this.sideBar.element.classList.toggle('SideBar--open')
   }
 
+  /**
+   * Handler to save a image when is clicked
+   *
+   */
   onSaveClick = () => {
     const image = this.canvas.element.toDataURL()
     const aLink = document.createElement('a')

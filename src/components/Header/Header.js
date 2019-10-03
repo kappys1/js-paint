@@ -13,10 +13,14 @@ class Header extends Component {
    * Creates an instance of Header
    * @param {Object} props - The props of the component
    * @param {Array<any>} props.children - The children
+   * @param {mixed} [props.onUndoClick] - The function to Undo onClick event
+   * @param {mixed} [props.onRedoClick] - The function to Redo onClick event
+   * @param {mixed} [props.onSaveClick] - The function to Save onClick event
+   * @param {mixed} [props.onOpenSidebarClick] - The function to menu onClick event
    * @throws {Error} - Incorrect type
    * @memberof Header
    */
-  constructor({onUndoClick, onRedoClick, onSaveClick, onOpenSidebarClick}) {
+  constructor({onUndoClick, onRedoClick, onSaveClick, onMenuClick}) {
     super('header')
     this.element.classList.add('Header')
 
@@ -28,7 +32,7 @@ class Header extends Component {
     this.onUndoClick = onUndoClick
     this.onRedoClick = onRedoClick
     this.onSaveClick = onSaveClick
-    this.onOpenSidebarClick = onOpenSidebarClick
+    this.onMenuClick = onMenuClick
 
     // undo button
     const undoContent = document.createElement('i')
@@ -59,13 +63,13 @@ class Header extends Component {
       onClick: this.onSaveClick
     })
 
-    // save button
+    // openSidebar button
     const openSidebar = document.createElement('i')
     openSidebar.className = 'Header__menu fa fa-bars'
     this.openSidebar = new Button({
       children: [openSidebar],
       isEnable: true,
-      onClick: this.onOpenSidebarClick
+      onClick: this.onMenuClick
     })
 
     const headerLeftContainer = new Section({

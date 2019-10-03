@@ -15,6 +15,8 @@ class SideBar extends Component {
    * Creates an instance of SideBar
    * @param {Object} props - The props of the component
    * @param {Array<any>} props.children - The children
+   * @param {mixed} [props.onColorClick] - The function to color onClick event
+   * @param {mixed} [props.onLineWidthClick] - The function to color onClick event
    * @throws {Error} - Incorrect type
    * @memberof SideBar
    */

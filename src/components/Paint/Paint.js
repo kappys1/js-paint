@@ -35,7 +35,7 @@ class Paint extends Component {
 
     this.width = width
     this.height = height
-    this.defaultColor = Config.defaultColor || '#000000'
+    this.defaultColor = Config.defaultColor
 
     this.strokes = new StoreStroke()
     this.currentStroke = {}
@@ -211,7 +211,8 @@ class Paint extends Component {
 
       this.strokes.redoPosition()
 
-      if (this.strokes.isPositionAtLeast) this.header.redoButton.disable()
+      console.log(this.strokes.isPositionAtLeast())
+      if (this.strokes.isPositionAtLeast()) this.header.redoButton.disable()
 
       this.header.undoButton.enable()
 

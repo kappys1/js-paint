@@ -67,3 +67,7 @@ To run a test case with coverage.
 
 - **master**: production.
 
+| Branches    | Stages     | site                                                           |
+| ----------- | ---------- | -------------------------------------------------------------- |
+| Staging |  Staging   | [heroku](https://js-paint-staging.herokuapp.com/)       |
+| Master  | Production | [Github Pages](https://kappys1.github.io/js-paint/) |

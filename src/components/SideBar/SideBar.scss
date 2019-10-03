@@ -7,8 +7,7 @@
   background-color: $c-primary;
   width: 100%;
   min-width: 250px;
-  max-width: 350px;
-  padding: 1em;
+  padding: 2em;
   position: fixed;
   right: -100%;
 
@@ -24,7 +23,11 @@
   }
 
   @include respond-to(medium) {
-    position: initial;
+    // position: initial;
+    right: 0;
     width: 15%;
   }
+
+
+
 }

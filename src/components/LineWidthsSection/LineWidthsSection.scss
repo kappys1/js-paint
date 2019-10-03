@@ -8,6 +8,5 @@ $LineWidthsSection-gridColumnGap: 0.4em;
   display: grid;
   grid-template-columns: repeat($LineWidthsSection-gridTemplateColumns-repeatInteger, 1fr);
   grid-column-gap: $LineWidthsSection-gridColumnGap;
-
-
+  font-size: 1rem;
 }

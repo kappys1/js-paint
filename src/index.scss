@@ -20,3 +20,19 @@ body {
   width: 100%;
   height: 100%;
 }
+
+@include respond-to(large) {
+
+  body,
+  html {
+    font-size: 68.5%;
+  }
+}
+
+@include respond-to(extra-large) {
+
+  body,
+  html {
+    font-size: 130%;
+  }
+}

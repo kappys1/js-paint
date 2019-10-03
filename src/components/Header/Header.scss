@@ -1,7 +1,13 @@
 @import '../../theme/mixins';
+@import '../../theme/variables';
+
 
 .Header {
   width: 100%;
+  background-color: $c-primary;
+  height: 6%;
+  min-height: 60px;
+  max-height: 70px;
 
   nav {
     height: 100%;
@@ -15,10 +21,30 @@
 
   &__left {
     width: 70%;
+
+    button {
+      padding-left: 1em
+    }
   }
 
   &__right {
     width: 30%;
     @include flex-content(row, center, flex-end);
+
+    button {
+      padding-right: 1em
+    }
   }
+
+  button i {
+    font-size: 1.5em;
+  }
+
+  @include respond-to(medium) {
+
+    &__menu {
+      display: none;
+    }
+  }
+
 }

@@ -63,7 +63,7 @@ class LineWidth extends Component {
   active() {
     this.isActive = true
 
-    this.element.classList.add('is-active')
+    this.element.classList.add('LineWidth--active')
     this.element.disabled = true
   }
 
@@ -75,7 +75,7 @@ class LineWidth extends Component {
   deactivate() {
     this.isActive = false
 
-    this.element.classList.remove('is-active')
+    this.element.classList.remove('LineWidth--active')
     this.element.disabled = false
   }
 }

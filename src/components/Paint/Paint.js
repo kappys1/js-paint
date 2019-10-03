@@ -60,7 +60,8 @@ class Paint extends Component {
     this.header = new Header({
       onUndoClick: this.onUndoClick,
       onRedoClick: this.onRedoClick,
-      onSaveClick: this.onSaveClick
+      onSaveClick: this.onSaveClick,
+      onOpenSidebarClick: this.onOpenSidebarClick
     })
     this.header.element.classList.add('Paint__header')
 
@@ -151,6 +152,10 @@ class Paint extends Component {
     context.lineWidth = width
   }
 
+  onOpenSidebarClick = () => {
+    this.sideBar.element.classList.toggle('SideBar--open')
+  }
+
   onSaveClick = () => {
     const image = this.canvas.element.toDataURL()
     const aLink = document.createElement('a')
@@ -158,6 +163,7 @@ class Paint extends Component {
     aLink.download = 'image.png'
     aLink.href = image
     aLink.click()
+    return aLink
   }
 
   /**

@@ -151,8 +151,10 @@ class Canvas extends Component {
   handleTouchEnd = event => {
     this.painting = false
 
-    const coordinateX = event.touches[0].clientX - this.element.offsetLeft
-    const coordinateY = event.touches[0].clientY - this.element.offsetTop
+    const clientX = event.touches.length ? event.touches[0].clientX : event.changedTouches[0].clientX
+    const clientY = event.touches.length ? event.touches[0].clientY : event.changedTouches[0].clientY
+    const coordinateX = clientX - this.element.offsetLeft
+    const coordinateY = clientY - this.element.offsetTop
 
     this.onTouchEnd(this.element.getContext('2d'), coordinateX, coordinateY)
   }

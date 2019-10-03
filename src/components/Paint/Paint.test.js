@@ -480,9 +480,8 @@ describe('paint', () => {
       paint = new Paint({width, height})
     })
     test('save image works', () => {
-      paint.onSaveClick()
-      const element = document.querySelector('a.download')
-      console.log(element)
+      const elm = paint.onSaveClick()
+      expect(elm).not.toBeNull()
     })
   })
 })

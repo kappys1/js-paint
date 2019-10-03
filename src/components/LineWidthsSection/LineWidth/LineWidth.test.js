@@ -108,7 +108,7 @@ describe('line width', () => {
       lineWidth.active()
 
       expect(lineWidth.isActive).toBeTruthy()
-      expect(lineWidth.element.classList.contains('is-active')).toBeTruthy()
+      expect(lineWidth.element.classList.contains('LineWidth--active')).toBeTruthy()
       expect(lineWidth.element.disabled).toBeTruthy()
     })
   })
@@ -125,7 +125,7 @@ describe('line width', () => {
       lineWidth.deactivate()
 
       expect(lineWidth.isActive).toBeFalsy()
-      expect(lineWidth.element.classList.contains('is-active')).toBeFalsy()
+      expect(lineWidth.element.classList.contains('LineWidth--active')).toBeFalsy()
       expect(lineWidth.element.disabled).toBeFalsy()
     })
   })

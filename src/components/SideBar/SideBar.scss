@@ -1,8 +1,30 @@
 @import '../../theme/mixins';
+@import '../../theme/variables';
+
 
 .SideBar {
+  height: 100%;
+  background-color: $c-primary;
+  width: 100%;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 1em;
+  position: fixed;
+  right: -100%;
+
+  transition: right 0.5s ease-in-out;
+
+  &--open {
+    right: 0;
+  }
+
   .Section {
     padding: 0;
     margin-bottom: 2em;
+  }
+
+  @include respond-to(medium) {
+    position: initial;
+    width: 15%;
   }
 }

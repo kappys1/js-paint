@@ -16,20 +16,24 @@ class Header extends Component {
    * @throws {Error} - Incorrect type
    * @memberof Header
    */
-  constructor({onUndoClick, onRedoClick, onSaveClick}) {
+  constructor({onUndoClick, onRedoClick, onSaveClick, onOpenSidebarClick}) {
     super('header')
     this.element.classList.add('Header')
 
     this.navElement = document.createElement('nav')
     this.navElement.classList.add('Header__nav')
 
+    this.open = false
+
     this.onUndoClick = onUndoClick
     this.onRedoClick = onRedoClick
     this.onSaveClick = onSaveClick
+    this.onOpenSidebarClick = onOpenSidebarClick
 
     // undo button
-    const undoContent = document.createElement('div')
-    undoContent.innerText = 'back'
+    const undoContent = document.createElement('i')
+    // undoContent.innerText = 'Undo'
+    undoContent.className = 'fa fa-chevron-circle-left'
     this.undoButton = new Button({
       children: [undoContent],
       isEnable: false,
@@ -37,8 +41,9 @@ class Header extends Component {
     })
 
     // redo button
-    const redoContent = document.createElement('div')
-    redoContent.innerText = 'next'
+    const redoContent = document.createElement('i')
+    // redoContent.innerText = 'Redo'
+    redoContent.className = 'fa fa-chevron-circle-right'
     this.redoButton = new Button({
       children: [redoContent],
       isEnable: false,
@@ -46,12 +51,21 @@ class Header extends Component {
     })
 
     // save button
-    const saveContent = document.createElement('div')
-    saveContent.innerText = 'Save'
+    const saveContent = document.createElement('i')
+    saveContent.className = 'fa fa-download'
     this.saveButton = new Button({
       children: [saveContent],
       isEnable: true,
       onClick: this.onSaveClick
+    })
+
+    // save button
+    const openSidebar = document.createElement('i')
+    openSidebar.className = 'Header__menu fa fa-bars'
+    this.openSidebar = new Button({
+      children: [openSidebar],
+      isEnable: true,
+      onClick: this.onOpenSidebarClick
     })
 
     const headerLeftContainer = new Section({
@@ -60,7 +74,7 @@ class Header extends Component {
     headerLeftContainer.element.classList.add('Header__left')
 
     const headerRightContainer = new Section({
-      children: [this.saveButton.element]
+      children: [this.saveButton.element, this.openSidebar.element]
     })
     headerRightContainer.element.classList.add('Header__right')
 

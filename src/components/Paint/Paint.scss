@@ -1,38 +1,21 @@
 @import '../../theme/mixins';
+@import '../../theme/variables';
 
-$Paint-backgroundColor: #ffffff;
-$Paint-backgroundColorSection: #F1F1F3;
-$Paint-header-height: 6%;
 $Paint-body-height: 94%;
-$Paint-body-width: 85%;
-$Paint-sidebar-width: 15%;
-
+$Paint-body-width-desktop: 85%;
+$Paint-body-width-mobile: 100%;
 
 .Paint {
   width: 100%;
   height: 100%;
   @include flex-content(column, flex-start, flex-start);
 
-  &__sidebar,
-  &__header {
-    background-color: $Paint-backgroundColorSection;
-  }
-
-  &__header,
   &__body {
     width: 100%;
   }
 
-
-  &__canvas,
-  &__sidebar {
+  &__canvas {
     height: 100%;
-  }
-
-  &__header {
-    height: $Paint-header-height;
-    min-height: 60px;
-    padding-right: $Paint-sidebar-width;
   }
 
   &__body {
@@ -42,22 +25,20 @@ $Paint-sidebar-width: 15%;
   }
 
   &__canvas {
-    width: $Paint-body-width;
+    width: $Paint-body-width-mobile;
     overflow: auto;
     @include flex-content(row, center, center);
 
     .Canvas {
-      background-color: $Paint-backgroundColor;
+      background-color: $c-white;
     }
   }
 
-  &__sidebar {
-    width: $Paint-sidebar-width;
-    min-width: 250px;
-    max-width: 350px;
-    padding: 1%;
+  @include respond-to(medium) {
+
+    &__canvas {
+      width: $Paint-body-width-desktop;
+    }
 
   }
-
-
 }

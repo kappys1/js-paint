@@ -1,9 +1,6 @@
-$Button-background: transparent;
-$Button-border: none;
-
 .Button {
   outline: none;
-  border: $Button-border;
-  background: $Button-background;
+  border: none;
+  background: transparent;
   cursor: pointer;
 }

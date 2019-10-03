@@ -1,0 +1,12 @@
+$breakpoints: ('small' : (min-width: 767px),
+  'medium' : (min-width: 992px),
+  'large' : (min-width: 1200px));
+
+$fz-base: 1rem !default;
+$fz-lg: $fz-base * 1.25 !default;
+$fz-sm: $fz-base * .75 !default;
+
+$c-primary: #F1F1F3;
+$c-secondary: #e6e6e6;
+$c-white: #ffffff;
+$c-text: #2e2e2e;

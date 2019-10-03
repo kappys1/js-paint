@@ -1,0 +1,13 @@
+@import '../../theme/mixins';
+
+$LineWidthsSection-gridTemplateColumns-repeatInteger: 5;
+$LineWidthsSection-gridColumnGap: 0.4em;
+
+.LineWidthsSection {
+  @include flex-content(row, center, space-around);
+  display: grid;
+  grid-template-columns: repeat($LineWidthsSection-gridTemplateColumns-repeatInteger, 1fr);
+  grid-column-gap: $LineWidthsSection-gridColumnGap;
+
+
+}

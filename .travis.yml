@@ -28,7 +28,7 @@ jobs:
         provider: heroku
         skip_cleanup: true # Don't re-run the tests
         api_key:
-          secure: ijS/pjfcl3dLIkKQo/WRAxV7J4gnY74QZZ7DF270F2xGzdIob9AhaGdBrD8YXrKHqAtytBgWEtTL6C8XbIOg+12D9KY4jjD07Nhu6pNHW/d9KFaKnNA45UD5GTlpLsOKfquE95zmPGQq3+vI1ZDMMWf3mdGvJUO0INxW7ILjQsyzdyrSl4O0DUO+CCL1QghbkmIPklvvlymGzuotTwmPxvitEMji/Yqzus+LdyQjQmmtfvR4rLB5bvgIn/1hZPbbuLI7g532WsTEBS5O9OzubNn20pDmPhg8G69UBpBVVXPxUrrm2BN1BUGUy4ciXdXEEFdG5mkgMJiO8YvbGJkTdqSF82Ibp+NCCitBxN2er5Cy9Iq4hghjOdO4vzgfBAQrfo/5ZD8ah2DjE05uczQoVPrHu8ZyRV+UGmeOc4fI9J2hSZv7yqOe3OXEwvYG3wKSIbhjRH+pe7stbOlaSNgrp599Pf5dT2Lau3vbO/VsUYQ4OtH5PWG03Inhd2IUGShEmTRVsOYdVqg4a9/3FuVPaCfZJorUeELNYuugVuwjNaSJFAvvMqrYZxLarmResMINpknocH2mTQ8A/zBsQyGwpnf1E+26g6/RMh6Dmf7iieQv9wXuzz81w3ia+ZVp11UY+3R/IfVKolub2fP5B0EkKSJZiauraG29Vnzyh7BoJJI=
+          secure: xb557s4WwKG9UgEChomI1BdYeKE3ITUOjJodXDn/iCmrsnkLRGts3V74l3OqK808auMy8pXEaQJGJjZg0d4FJFG5aAeYuMLbob76cqSH08JUaQaHLRrR+xmsF2cU5BjX1iYUtqGJTnGe4Kdv/wP8Tg0sKUzPoiIo5dGa1cb2ItkDleexjDqA4Evb/OuHE7lwC28NkdP+OFTuQyemiTcQYB6rcl/pm29HlgNczQ+e+U3UJlw4nU9bC73uKxau7JrHAb6fPg8Z8Vt/T0nCk7QIb3sqsY4Q6Si9R0uRUnsVIX2wX1QfQ+eb2dibcaLHrxi474o0Nj/OXs6fAkXsBBQ525ZbB3sQcZT5JT5inFjbwupKGguI47+83FQOQN0KVmDAjfQW+Tf7q6/FqEGpvc0QfbTBFJYK+T4o6XIfppsvIG+32QToOLOizR6xKFwojpg1P5q1wubwYf4KBSKE2g1FYaBA9MZKLkxq6waAHHESNIG+lZtRT0Y4dq2i+Km8LP1uycroFlbY9W+MsLPkyYjUTvxPQLRop+GiZDR19tWT3q2RzK7t6A8Lo31aL3oeLp+2QPWIKTqxSYcmOUrTJgDT3VMc72sIcGwO9Pe2lepyXy36FBuzyU3DOuMysbMLnphzpht1z+dtTPQPp74C92iNkvhnjMY252WKQ775drOVE5k=
         app: paint-staging
         on:
           repo: kappys1/js-paint

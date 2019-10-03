@@ -9,11 +9,13 @@
 A simple paint builded with Vanilla JS.
 It's develop for a exercice.
 
-## [Play with it](https://kappys1.github.io/js-paint/) 
+![Paint](./paint.png)
+
+## [Play with it](https://kappys1.github.io/js-paint/)
  
 ## Install
 
-1. clone 
+1. Clone
 
 2. Install
 
@@ -33,17 +35,17 @@ npm run dev
 
 To get a release.
 
-    ```shell
-    npm run build
-    ```
+```shell
+npm run build
+```
 
 ## Test
 
 To run a test case with coverage.
 
-    ```shell
-    npm run test
-    ```
+```shell
+npm run test
+```
 
 
 ## To Do

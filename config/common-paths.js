@@ -5,6 +5,6 @@ const {resolve} = require('path')
 module.exports = {
   root: resolve(__dirname, '../'),
   src: resolve(__dirname, '../', 'src'),
-  build: resolve(__dirname, '../', 'build'),
+  build: resolve(__dirname, '../', 'dist'),
   public: resolve(__dirname, '../', 'public')
 }

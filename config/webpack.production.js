@@ -25,8 +25,5 @@ module.exports = {
       new OptimizeCssAssetsWebpackPlugin()
     ]
   },
-  plugins: [
-    new CleanWebpackPlugin([commonPaths.build], {root: commonPaths.root}),
-    new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'})
-  ]
+  plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'})]
 }

@@ -12,12 +12,12 @@ $LineWidth-icon-backgroundColor: #000000;
   margin: 0;
   cursor: pointer;
 
-  &:hover {
+  &:hover:not(.LineWidth--active) {
     border: 1px solid $LineWidth--hover-borderColor;
     border-radius: 50%;
   }
 
-  &.is-active {
+  &--active {
     border: 1px solid $LineWidth--isActive-borderColor;
     border-radius: 50%;
   }

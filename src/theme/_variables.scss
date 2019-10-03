@@ -1,6 +1,7 @@
 $breakpoints: ('small' : (min-width: 767px),
   'medium' : (min-width: 992px),
-  'large' : (min-width: 1200px));
+  'large' : (min-width: 1200px),
+  'extra-large' : (min-width: 2000px));
 
 $fz-base: 1rem !default;
 $fz-lg: $fz-base * 1.25 !default;

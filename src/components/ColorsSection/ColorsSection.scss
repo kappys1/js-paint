@@ -2,6 +2,7 @@
 
 .ColorsSection {
   padding: 0;
+
   @include flex-content(row, center, center);
   @include flex-wrap(wrap);
 

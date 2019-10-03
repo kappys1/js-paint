@@ -37,7 +37,7 @@
   }
 
   button i {
-    font-size: 1.5em;
+    font-size: 2rem;
   }
 
   @include respond-to(medium) {
@@ -45,6 +45,7 @@
     &__menu {
       display: none;
     }
+
   }
 
 }

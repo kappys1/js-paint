@@ -9,11 +9,13 @@
 A simple paint builded with Vanilla JS.
 It's develop for a exercice.
 
-## [Play with it](https://kappys1.github.io/js-paint/) 
+![Paint](./paint.png)
+
+## [Play with it](https://kappys1.github.io/js-paint/)
  
 ## Install
 
-1. clone 
+1. Clone
 
 2. Install
 
@@ -33,24 +35,26 @@ npm run dev
 
 To get a release.
 
-    ```shell
-    npm run build
-    ```
+```shell
+npm run build
+```
 
 ## Test
 
 To run a test case with coverage.
 
-    ```shell
-    npm run test
-    ```
+```shell
+npm run test
+```
 
 
 ## To Do
 
 - [x] Paint
-- [x] Components using ES6, Webpack, Babel.
-- [x] Theme Style using SCSS with BEM CSS pattern
+- [x] Components using ES6, Webpack, Babel
+- [x] Mobile adaptable with touch Events
+- [x] Theme Style using SCSS with BEM CSS pattern.
+- [x] Mobile first styles.
 - [x] TDD ([Jest](https://jestjs.io/)) with mock canvas
 - [x] Coverage test and upload to [Coveralls](https://coveralls.io/github/kappys1/js-paint)
 - [x] Eslint ([Airbnb](https://github.com/airbnb/javascript))

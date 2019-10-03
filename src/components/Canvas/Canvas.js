@@ -90,7 +90,7 @@ class Canvas extends Component {
 
   /**
    * Handler touch down
-   * @param {MouseEvent} event - The event
+   * @param {TouchEvent} event - The event
    * @memberof Canvas
    */
   handleTouchStart = event => {
@@ -102,7 +102,7 @@ class Canvas extends Component {
   }
 
   /**
-   * Handler touch move
+   * Handler Mouse move
    * @param {MouseEvent} event - The event
    * @memberof Canvas
    */
@@ -117,7 +117,7 @@ class Canvas extends Component {
 
   /**
    * Handler Touch move
-   * @param {MouseEvent} event - The event
+   * @param {TouchEvent} event - The event
    * @memberof Canvas
    */
   handleTouchMove = event => {
@@ -144,8 +144,8 @@ class Canvas extends Component {
   }
 
   /**
-   * Handler mouse up
-   * @param {MouseEvent} event - The event
+   * Handler Touch end
+   * @param {TouchEvent} event - The event
    * @memberof Canvas
    */
   handleTouchEnd = event => {
